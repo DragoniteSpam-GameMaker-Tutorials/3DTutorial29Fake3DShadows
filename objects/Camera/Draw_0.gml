@@ -33,11 +33,13 @@ camera_apply(camera);
 // Everything must be drawn after the 3D projection has been set
 vertex_submit(vbuffer, pr_trianglelist, sprite_get_texture(spr_grass, 0));
 
-// The player
+// Draw the player
 matrix_set(matrix_world, matrix_build(Player.x, Player.y, Player.z, 0, 0, 0, 1, 1, 1));
 vertex_submit(vb_player, pr_trianglelist, -1);
+// Draw the shadow (add a small value to the height to prevent it from fighting with the floor)
 matrix_set(matrix_world, matrix_build(Player.x, Player.y, Player.z + 1, 0, 0, 0, 1, 1, 1));
 vertex_submit(vb_shadow, pr_trianglelist, sprite_get_texture(spr_shadow, 0));
+// Reset the transform
 matrix_set(matrix_world, matrix_build_identity());
 
 // The other things

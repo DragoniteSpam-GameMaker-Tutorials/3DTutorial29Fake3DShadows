@@ -23,11 +23,6 @@ vertex_format = vertex_format_end();
 #region shadow vertex buffer
 vb_shadow = vertex_create_buffer();
 vertex_begin(vb_shadow, vertex_format);
-#endregion
-
-#region create the grid
-vbuffer = vertex_create_buffer();
-vertex_begin(vbuffer, vertex_format);
 
 vertex_add_point(vb_shadow, -32, -32, 0,        0, 0, 1,        0, 0,       c_white, 1);
 vertex_add_point(vb_shadow,  32, -32, 0,        0, 0, 1,        1, 0,       c_white, 1);
@@ -39,6 +34,10 @@ vertex_add_point(vb_shadow, -32, -32, 0,        0, 0, 1,        0, 0,       c_wh
 
 vertex_end(vb_shadow);
 #endregion
+
+#region create the grid
+vbuffer = vertex_create_buffer();
+vertex_begin(vbuffer, vertex_format);
 
 // Create a checkerboard pattern on the floor
 var s = 128;
